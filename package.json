@@ -1,0 +1,17 @@
+{
+  "name": "api-calls-from-nodejs",
+  "version": "1.0.0",
+  "description": "'Small server to call APIs from Node.js itself'",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "server",
+    "API",
+    "nodejs"
+  ],
+  "author": "Alfredo Cabrera",
+  "license": "MIT"
+}
