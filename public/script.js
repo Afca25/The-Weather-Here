@@ -1,4 +1,5 @@
- 
+const latDiv = document.querySelector(.lat-div) 
+const longDiv = document.querySelector(.long-div) 
  
  // --------- Check geolocation (geolocation browser object) --------
 if ("geolocation" in navigator) {
