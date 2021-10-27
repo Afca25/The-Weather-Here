@@ -11,10 +11,19 @@ if ("geolocation" in navigator) {
     const latitude = position.coords.latitude
     const longitude = position.coords.longitude
     latPos.textContent = await `Latitude: ${latitude}°` 
-    longPos.textContent = await `Longitude: ${longitude}°` 
+    longPos.textContent = await `Longitude: ${longitude}°`
     
+    //----------- GET current weather ----------
+    const APIkey = '33231c152d824b0ca34e8e8553666ebf'
+    const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${APIkey}`
+    
+    const respo = await fetch(weatherURL)
+    const json2 = await respo.json()
+    const d = console.log(json2)
+
     submitBtn.addEventListener('click', async function () {
-        
+      
+      //-------- POST location to db --------------
       const timestamp = Date.now()
       const data = {latitude,longitude,timestamp}
       const options = {
@@ -28,9 +37,20 @@ if ("geolocation" in navigator) {
       const res = await fetch('/api', options)
       const json = await res.json()
       const dat = console.log(json)
+
+      
       })
   })
 } else {
     /* geolocation is not available */
     console.log('Geolocation is NOT available ' + ' 🙁')
   }
+/* async function fetchWeather() {
+  const APIkey = '33231c152d824b0ca34e8e8553666ebf'
+  const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=33231c152d824b0ca34e8e8553666ebf`
+  
+  const respo = await fetch(weatherURL)
+  const json2 = await respo.json()
+  const d = console.log(json2)
+}
+fetchWeather() */
