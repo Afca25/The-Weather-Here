@@ -1,9 +1,16 @@
-const express = require ('express')
-
+const express = require('express')
 const app = express()
+const Datastore = require('nedb')
+const database = new Datastore('database.db')
+
 app.listen(3000,() => console.log('Listening at 3000...'))
 app.use(express.static('public'))
 app.use(express.json({limit: '1mb'}))
+database.loadDatabase()
+
+
+//! To delete all the content from the database uncomment this (and run server twice)
+/* database.remove({}, { multi: true }, function (err, numRemoved) {}) */
 
 
 //? ---------- POST method -----------
@@ -18,6 +25,8 @@ app.post('/api', (request, response) => {
 //? ------------ GET method --------------
 
 app.get(('/api'), (request, response) => {
-  
-  response.json(data)
+  database.find({}, (err, data) => {
+
+    response.json(data)
+  })
 })
