@@ -12,13 +12,12 @@ database.loadDatabase()
 //! To delete all the content from the database uncomment this (and run server twice)
 /* database.remove({}, { multi: true }, function (err, numRemoved) {}) */
 
-
 //? ---------- POST method -----------
 
 app.post('/api', (request, response) => {
   console.log('I got a request')
   const data = request.body
-
+  database.insert(data)
   response.json(data)
 })
 
@@ -26,7 +25,6 @@ app.post('/api', (request, response) => {
 
 app.get(('/api'), (request, response) => {
   database.find({}, (err, data) => {
-
     response.json(data)
   })
 })

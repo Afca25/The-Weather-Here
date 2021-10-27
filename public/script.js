@@ -1,5 +1,6 @@
-const latDiv = document.querySelector(.lat-div) 
-const longDiv = document.querySelector(.long-div) 
+const latPos = document.querySelector('.lat-div') 
+const longPos = document.querySelector('.long-div') 
+const submitBtn = document.querySelector('.submit-btn')
  
  // --------- Check geolocation (geolocation browser object) --------
 if ("geolocation" in navigator) {
@@ -9,8 +10,25 @@ if ("geolocation" in navigator) {
     console.log(position.coords.latitude, position.coords.longitude);
     const latitude = position.coords.latitude
     const longitude = position.coords.longitude
-    latPos.textContent = await latitude
-    longPos.textContent = await longitude
+    latPos.textContent = await `Latitude: ${latitude}°` 
+    longPos.textContent = await `Longitude: ${longitude}°` 
+    
+    submitBtn.addEventListener('click', async function () {
+        
+      const timestamp = Date.now()
+      const data = {latitude,longitude,timestamp}
+      const options = {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      }
+
+      const res = await fetch('/api', options)
+      const json = await res.json()
+      const dat = console.log(json)
+      })
   })
 } else {
     /* geolocation is not available */
