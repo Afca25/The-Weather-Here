@@ -14,7 +14,7 @@ if ("geolocation" in navigator) {
     longPos.textContent = await `Longitude: ${longitude}°`
     
     //----------- GET current weather ----------
-    const weather_innerURL = `/weather`
+    const weather_innerURL = `/weather/${latitude},${longitude}`
     
     const respo = await fetch(weather_innerURL)
     const json2 = await respo.json()
