@@ -23,7 +23,7 @@ app.post('/api', (request, response) => {
   response.json(data)
 })
 
-//? ------------ GET method --------------
+//? ------------ GET methods --------------
 
 app.get(('/api'), (request, response) => {
   database.find({}, (err, data) => {
@@ -38,7 +38,18 @@ app.get(('/weather/:latlon'), async (request, response) => {
   const APIkey = '33231c152d824b0ca34e8e8553666ebf'
   const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${APIkey}`
   
-  const respo = await fetch(weatherURL)
-  const json2 = await respo.json()
-  response.json(json2)
+  const weather_res = await fetch(weatherURL)
+  const weather_json = await weather_res.json()
+  
+  //-------GET current AQ -----------
+    const aq_url = `https://docs.openaq.org/v2/latest?coordinates=${lat}%2C${lon}`
+    const aq_res = await fetch(aq_url)
+    const aq_json = await aq_res.json()
+    
+    const data = {
+      weather: weather_json,
+      air_quality: aq_json
+    }
+    
+    response.json(data)
 })
