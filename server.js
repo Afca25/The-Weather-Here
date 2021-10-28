@@ -12,7 +12,7 @@ database.loadDatabase()
 
 
 //! To delete all the content from the database uncomment this (and run server twice)
-/* database.remove({}, { multi: true }, function (err, numRemoved) {}) */
+/* database.remove({}, { multi: true }, function (err, numRemoved) {}) */ 
 
 //? ---------- POST method -----------
 
