@@ -32,8 +32,7 @@ app.get(('/api'), (request, response) => {
 })
 
 app.get(('/weather/:latlon'), async (request, response) => {
-  const latlon = request.params.latlon
-  latlon.split(',')
+  const latlon = request.params.latlon.split(',')
   const lat = latlon[0]
   const lon = latlon[1]
   const APIkey = '33231c152d824b0ca34e8e8553666ebf'

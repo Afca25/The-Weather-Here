@@ -20,6 +20,23 @@
 
 - This error was HARD to find an answer on my own, but I did it (!) I uninstalled my node-fetch, found out his version,  installed specifically his version and it ran perfectly. (Apparently you CANNOT mix 'require' and 'import-from')
 
+- I had an error trying to use .split() on a constant associated to an array. It doesn't work. It has to be directly to the array/object like this:
+  
+  ```javascript
+  /* ---- WRONG WAY ---- */
+  const latlon = request.params.latlon
+  latlon.split(',')
+  console.log(latlon) // logs a string 33.552,-25.226
+  const lat = latlon[0]
+  const lon = latlon[1]
+  console.log(lat, lon) // logs 0,1
+  
+  /*---- RIGHT WAY ----*/
+  const latlon = request.params.latlon.split(',')
+  const lat = latlon[0]
+  const lon = latlon[1]
+  ```
+
 
 
 
