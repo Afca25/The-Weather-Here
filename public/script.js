@@ -1,8 +1,12 @@
 const latPos = document.querySelector('.lat-div') 
 const longPos = document.querySelector('.long-div') 
 const submitBtn = document.querySelector('.submit-btn')
+const weatherTitle = document.querySelector('.city')
+const weather = document.querySelector('.weather')
+const temperature = document.querySelector('.temperature')
+
  
- // --------- Check geolocation (geolocation browser object) --------
+// --------- Check geolocation (geolocation browser object) --------
 if ("geolocation" in navigator) {
   /* geolocation is available */
   console.log('Geolocation is available' + ' 🙂')
@@ -19,6 +23,15 @@ if ("geolocation" in navigator) {
     const respo = await fetch(weather_innerURL)
     const json2 = await respo.json()
     const d = console.log(json2)
+    const tempData = `${json2.main.temp}°`
+    const weatherData = `${json2.weather[0].description}`
+    const cityName = json2.name
+    console.log(tempData)
+    
+    //---------- RENDER current weather ----------
+    weatherTitle.textContent = `The weather in ${cityName} is:`
+    weather.textContent = `${weatherData[0].toUpperCase()}${weatherData.slice(1)}`
+    temperature.textContent = `with a temperature of ${tempData}C.`
 
     submitBtn.addEventListener('click', async function () {
       
