@@ -8,7 +8,17 @@
 
 - This all means that we'll make that request (weather-fetch-get request) from our server (server-side)
 
+- That's all good but **fetch()** is a <u>client-side browser API</u> , meaning,<u> I can't use fetch on my server unless I install a node package called node-fetch</u>
 
+- node-fetch gave me an error because I installed v3.0.0 and he installed v2.6.0, my version was newer and was called as a "module" so you'd have to type 
+  
+  ```javascript
+  import fetch from 'node-fetch'
+  // instead of 
+  const fetch = require('node-fetch')
+  ```
+
+- This error was HARD to find an answer on my own, but I did it (!) I uninstalled my node-fetch, found out his version,  installed specifically his version and it ran perfectly. (Apparently you CANNOT mix 'require' and 'import-from')
 
 
 

@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const Datastore = require('nedb')
 const database = new Datastore('database.db')
+const fetch = require('node-fetch')
+
 
 app.listen(3000,() => console.log('Listening at 3000...'))
 app.use(express.static('public'))
@@ -27,4 +29,13 @@ app.get(('/api'), (request, response) => {
   database.find({}, (err, data) => {
     response.json(data)
   })
+})
+
+app.get(('/weather'), async (request, response) => {
+  const APIkey = '33231c152d824b0ca34e8e8553666ebf'
+  const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=10.3542&lon=-67.0507&units=metric&appid=${APIkey}`
+  
+  const respo = await fetch(weatherURL)
+  const json2 = await respo.json()
+  response.json(json2)
 })

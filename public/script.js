@@ -14,10 +14,9 @@ if ("geolocation" in navigator) {
     longPos.textContent = await `Longitude: ${longitude}°`
     
     //----------- GET current weather ----------
-    const APIkey = '33231c152d824b0ca34e8e8553666ebf'
-    const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${APIkey}`
+    const weather_innerURL = `/weather`
     
-    const respo = await fetch(weatherURL)
+    const respo = await fetch(weather_innerURL)
     const json2 = await respo.json()
     const d = console.log(json2)
 
