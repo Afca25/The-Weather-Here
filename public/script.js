@@ -48,10 +48,10 @@ if ("geolocation" in navigator) {
       lastChecked.textContent = `last read on ${aq_lastChecked}.`
 
     }else {
-      aq_value = 'There are still no records for air pollution here'
+      aq_value = 'There are still no records for air quality here'
       aq_unit = ''
       aq_lastChecked = ''
-      air = 'There are no records yet'
+      air = 'There are no records yet' 
 
       concentration.textContent = `${aq_value}`
       lastChecked.textContent = ``

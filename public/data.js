@@ -8,22 +8,41 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   for (const item of json) {
     let div = document.createElement('div')
+   
     let cityP = document.createElement('p')
     cityP.textContent = `City: ${item.cityName}`
+   
     let latP = document.createElement('p')    
     latP.textContent = `Latitude: ${item.latitude}°`
+   
     let longP = document.createElement('p')    
     longP.textContent = `Longitude: ${item.longitude}°`
+   
     let timeP = document.createElement('p')    
     timeP.textContent = `Timestamp: ${item.timestamp}`
+   
     let weatherP = document.createElement('p')    
     weatherP.textContent = `Weather: ${item.weatherData}`
+   
     let tempP = document.createElement('p')    
     tempP.textContent = `Temperature: ${item.tempData}`
+    
     let airP = document.createElement('p')    
-    airP.textContent = `Concentration: ${item.air.value} ${item.air.unit}`
+    
     let lastCheckedP = document.createElement('p')    
-    lastCheckedP.textContent = `Last updated: ${item.air.lastUpdated}`
+    
+    if(item.air.value || item.air.value == 0) {
+
+      airP.textContent = `Concentration: ${item.air.value} ${item.air.unit}`
+     
+      lastCheckedP.textContent = `Last updated: ${item.air.lastUpdated}`
+    } else {
+      airP.textContent = `Concentration: No records yet`
+     
+      lastCheckedP.textContent = `Last updated: No records yet`
+
+    }
+
 
     div.append(cityP, latP, longP, timeP, weatherP, tempP, airP, lastCheckedP)
 /*     div.style.backgroundColor = '#FF4B9A' */
