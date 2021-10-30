@@ -41,10 +41,26 @@
 
 It's like any other variable (like const or let) but it's not set in the code, it's set <u>in the environment</u>.
 
- It depends on the environment you're currently working on or on the web-server where you're hosting the page
+ It depends on the environment you're currently working on or on the web-server where you're hosting the page. However, you need 2 steps. Store in your environment on Node.js and hide it from git/github 
 
 ###### On Node.js
 
 You can use an npm package called [**DotEnv**](C:\Alfredo Cabrera\Personal\Intereses\Study\Web Developer\How to hide your API key in your code using DotEnv on Node.js.md) 
+
+###### Hiding from git/github
+
+create a file in your project's folder called '.gitignore' and inside that file copy on each line the name of the file you want to hide.
+
+For example:
+
+    .env
+
+    node_modules/      ---> why the slash? because it's a folder
+
+    database.db
+
+
+
+
 
 [^1]: Check [**WebDevSimplified's video on CORS**](https://www.youtube.com/watch?v=PNtFSVU-YTI), maybe it's not that hard to understand
