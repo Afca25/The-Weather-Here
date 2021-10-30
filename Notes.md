@@ -37,10 +37,14 @@
   const lon = latlon[1]
   ```
 
+#### Hiding API keys inside your code (Environment variable)
 
+It's like any other variable (like const or let) but it's not set in the code, it's set <u>in the environment</u>.
 
+ It depends on the environment you're currently working on or on the web-server where you're hosting the page
 
+###### On Node.js
+
+You can use an npm package called [**DotEnv**](C:\Alfredo Cabrera\Personal\Intereses\Study\Web Developer\How to hide your API key in your code using DotEnv on Node.js.md) 
 
 [^1]: Check [**WebDevSimplified's video on CORS**](https://www.youtube.com/watch?v=PNtFSVU-YTI), maybe it's not that hard to understand
-
-
