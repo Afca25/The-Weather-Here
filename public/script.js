@@ -85,12 +85,3 @@ if ("geolocation" in navigator) {
     /* geolocation is not available */
     console.log('Geolocation is NOT available ' + ' 🙁')
   }
-/* async function fetchWeather() {
-  const APIkey = '33231c152d824b0ca34e8e8553666ebf'
-  const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=33231c152d824b0ca34e8e8553666ebf`
-  
-  const respo = await fetch(weatherURL)
-  const json2 = await respo.json()
-  const d = console.log(json2)
-}
-fetchWeather() */
